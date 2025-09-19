@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Practice 2 — CSS Font Control</title>
+  <style>
+    body{font-family: Arial, sans-serif; padding:1rem; max-width:700px; margin:auto;}
+    #box{padding:16px;border:4px solid #000; margin-top:12px;}
+  </style>
+</head>
+<body>
+  <h1>CSS Font Control</h1>
+
+  <label>RGB color: <input id="rgb" placeholder="e.g. 255,0,0" value="0,0,0"></label>
+  <label style="margin-left:12px">Border width (px): <input id="bwidth" type="number" value="4" min="0"></label>
+  <button id="apply">Apply</button>
+
+  <div id="box">
+    <p id="text">This is some sample paragraph text. Change the color and border width using the controls above.</p>
+  </div>
+
+  <script>
+          // some template aspects of code made by chatgpt
+    const rgbInput = document.getElementById('rgb');
+    const bInput = document.getElementById('bwidth');
+    const apply = document.getElementById('apply');
+    const box = document.getElementById('box');
+    const text = document.getElementById('text');
+
+    apply.addEventListener('click', () => {
+      const rgb = rgbInput.value.trim();
+
+      if(!/^(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\s*,\s*(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\s*,\s*(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])$/.test(rgb)){
+        alert('Enter RGB as three numbers 0-255 separated by commas, e.g. 128,0,255');
+        return;
+      }
+
+      text.style.color = 'rgb(' + rgb + ')';
+
+      box.style.borderWidth = (parseInt(bInput.value) || 0) + 'px';
+
+    });
+  </script>
+</body>
+</html>
