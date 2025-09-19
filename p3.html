@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Practice 3 — Password Verify</title>
+</head>
+<body>
+  <h1>Password Verification</h1>
+  <form id="pwForm">
+    <label>Enter password: <input type="password" id="p1"></label><br><br>
+    <label>Re-enter password: <input type="password" id="p2"></label><br><br>
+    <button type="submit">Verify</button>
+  </form>
+
+  <script>
+          // Code written by me, but asked AI to fix a couple bugs
+    document.getElementById('pwForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const p1 = document.getElementById('p1').value;
+      const p2 = document.getElementById('p2').value;
+      if(p1.length < 8){
+        alert('Password must be at least 8 characters long.');
+        return;
+      }
+      if(p1 !== p2){
+        alert('Passwords do not match.');
+        return;
+      }
+      alert('Success — passwords match!');
+    });
+  </script>
+</body>
+</html>
